@@ -2,15 +2,18 @@ package estacionamento.gerenciamento;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalTime;
 import java.util.Map;
 import java.util.Scanner;
 
 import estacionamento.entidade.Carro;
+import estacionamento.entidade.Motorista;
 import estacionamento.entidade.Pessoa;
 import estacionamento.estadia.Estadia;
 import estacionamento.repository.Repositorio;
+import estacionamento.repository.RepositorioMotorista;
 import estacionamento.repository.RepositorioPessoa;
 
 public class Gerenciamento extends Repositorio {
@@ -127,7 +130,7 @@ public class Gerenciamento extends Repositorio {
 		return estadiaDeConsulta.getEntrada().until(estadiaDeConsulta.getSaida(), SECONDS);
 	}
 
-	public static void setPessoa() throws IOException {
+	public static void inserePessoa() throws FileNotFoundException {
 		Pessoa pessoa = new Pessoa();
 		Scanner scanner = new Scanner(System.in);
 		
@@ -140,15 +143,44 @@ public class Gerenciamento extends Repositorio {
 		System.out.println(pessoa.getNome());
 		System.out.println(pessoa.getTelefone());
 		
-		RepositorioPessoa.grava(pessoa);
-				
+		RepositorioPessoa.gravaLista(pessoa);
+		
 	}
+
 
 	public static void getPessoa() throws IOException {
 		
 		Pessoa pessoa = RepositorioPessoa.le();
 		System.out.println(pessoa.getNome());
 				
+	}
+
+
+	public static void getListaPessoa() throws IOException {
+		Pessoa pessoa = RepositorioPessoa.leLista();
+		System.out.println(pessoa.getNome());
+		
+	}
+
+	public static void insereMotorista() throws IOException{
+		
+		Motorista motorista = new Motorista();
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("Digite o Nome");
+		motorista.setNome(scanner.next());
+		
+		System.out.print("Digite o Telefone");
+		motorista.setTelefone(scanner.next());
+		
+		
+		System.out.println(motorista.getNome());
+		
+		System.out.println(motorista.getTelefone());
+		
+		RepositorioMotorista.grava(motorista);
+		System.out.println(motorista.getNome());
+		
 	}
 	
 }

@@ -17,7 +17,23 @@ public class Estacionamento extends Repositorio{
 	public static void menu() throws IOException{
 		do {
 			
-			System.out.println("Escolha Uma Opção: [1] Entrada [2] Saída [3] Permanência [4] Qt Carro [05] Remove [6] Listar [7] Gravar [8] Lê [0] Sair");
+			System.out.println("Escolha Uma Opção: [1] "
+					+ "Entrada [2] "
+					+ "Saída [3] "
+					+ "Permanência "
+					+ "[04] Qt Carro "
+					+ "[05] Remove "
+					+ "[06] Listar "
+					+ "[07] Gravar "
+					+ "[08] Lê "
+					+ "[09] Testes "
+					+ "[10] Escreve pessoa "
+					+ "[11] Lê pessoa "
+					+ "[12] Esc Lst de pessoa "
+					+ "[13] Lê Lst de pessoa "
+					+ "[14] Ins Motorista"
+					+ "[15] Lê Motorista"
+					+ "[0] Sair");
 			try {
 			opcao = scanner.nextInt();
 			}catch (Exception e) {
@@ -43,10 +59,11 @@ public class Estacionamento extends Repositorio{
 			}else if ( opcao == 9 ) {
 				Gerenciamento.debug();
 			}else if ( opcao == 10 ) {
-				Gerenciamento.setPessoa();
+				Gerenciamento.inserePessoa();
 			}else if (opcao == 11 ) {
 				Gerenciamento.getPessoa();
-		
+			}else if (opcao == 12 ) {
+				Gerenciamento.insereMotorista();
 			}
 			
 		}while (opcao != 0);
